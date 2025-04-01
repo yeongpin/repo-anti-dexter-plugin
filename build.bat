@@ -9,6 +9,7 @@ echo.
 set PROJECT_NAME=Anti-Dexter
 set SOLUTION_FILE=%PROJECT_NAME%.sln
 set OUTPUT_DIR=Build
+set RELEASE_NAME=anti-dexter
 
 :: 创建输出目录
 if not exist %OUTPUT_DIR% mkdir %OUTPUT_DIR%
@@ -17,6 +18,7 @@ echo 正在清理旧的编译文件...
 if exist %PROJECT_NAME%\bin rd /s /q %PROJECT_NAME%\bin
 if exist %PROJECT_NAME%\obj rd /s /q %PROJECT_NAME%\obj
 if exist %OUTPUT_DIR%\%PROJECT_NAME%.dll del %OUTPUT_DIR%\%PROJECT_NAME%.dll
+if exist %OUTPUT_DIR%\%RELEASE_NAME%.zip del %OUTPUT_DIR%\%RELEASE_NAME%.zip
 
 echo.
 echo 正在编译项目...
@@ -38,6 +40,27 @@ if exist %OUTPUT_DIR%\%PROJECT_NAME%.dll (
 ) else (
     echo.
     echo 文件复制失败！请检查路径是否正确。
+    goto :end
+)
+
+echo.
+echo 正在复制附加文件...
+if exist icon.png copy icon.png %OUTPUT_DIR%\icon.png
+if exist manifest.json copy manifest.json %OUTPUT_DIR%\manifest.json
+if exist README.md copy README.md %OUTPUT_DIR%\README.md
+if exist CHANGELOG.md copy CHANGELOG.md %OUTPUT_DIR%\CHANGELOG.md
+
+echo.
+echo 正在创建发布包...
+powershell -Command "Compress-Archive -Path '%OUTPUT_DIR%\*' -DestinationPath '%OUTPUT_DIR%\%RELEASE_NAME%.zip' -Force"
+
+if exist %OUTPUT_DIR%\%RELEASE_NAME%.zip (
+    echo.
+    echo 发布包已创建: %OUTPUT_DIR%\%RELEASE_NAME%.zip
+) else (
+    echo.
+    echo 创建发布包失败！
+    goto :end
 )
 
 echo.
