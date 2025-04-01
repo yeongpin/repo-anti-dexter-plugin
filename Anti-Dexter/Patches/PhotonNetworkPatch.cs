@@ -1,6 +1,6 @@
 using HarmonyLib;
 using Photon.Pun;
-using NameColorizer;
+using NameChanger;
 
 namespace AntiDexter.Patches
 {
@@ -24,14 +24,14 @@ namespace AntiDexter.Patches
                     {
                         // 设置新的昵称
                         PhotonNetwork.LocalPlayer.NickName = "Mohamad";
-                        ColoredNametagMod.logger.LogInfo($"检测到目标名称: {currentName}，已替换为: Mohamad");
+                        AntiDexterPlugin.logger.LogInfo($"检测到目标名称: {currentName}，已替换为: Mohamad");
                     }
                 }
             }
             catch (System.Exception ex)
             {
                 // 记录错误
-                ColoredNametagMod.logger.LogError($"修改名称时发生错误: {ex.Message}");
+                AntiDexterPlugin.logger.LogError($"修改名称时发生错误: {ex.Message}");
             }
         }
     }

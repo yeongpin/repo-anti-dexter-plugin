@@ -10,13 +10,13 @@ using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
 
-namespace NameColorizer
+namespace NameChanger
 {
     [BepInPlugin(PLUGIN_GUID, PLUGIN_NAME, PLUGIN_VERSION)]
-    public class ColoredNametagMod : BaseUnityPlugin
+    public class AntiDexterPlugin : BaseUnityPlugin
     {
-        public const string PLUGIN_GUID = "zombieseatflesh7.ColoredNametags";
-        public const string PLUGIN_NAME = "Anti-Dexter";
+        public const string PLUGIN_GUID = "pinstudios.AntiDexter";
+        public const string PLUGIN_NAME = "AntiDexter";
         public const string PLUGIN_VERSION = "1.0.0";
 
         internal static readonly ManualLogSource logger = BepInEx.Logging.Logger.CreateLogSource(PLUGIN_NAME);

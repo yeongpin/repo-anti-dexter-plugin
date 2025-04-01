@@ -1,4 +1,4 @@
-# Anti-Dexter
+# AntiDexter
 
 一个简单的REPO游戏插件，为朋友特制，用于检测名为"Dexter"的玩家并将其名称修改为"Mohamad"。
 

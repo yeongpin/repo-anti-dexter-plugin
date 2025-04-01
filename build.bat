@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 > nul
 echo ===================================
-echo Anti-Dexter 插件编译脚本
+echo AntiDexter 插件编译脚本
 echo ===================================
 echo.
 

@@ -1,6 +1,6 @@
 using HarmonyLib;
 using UnityEngine;
-using NameColorizer;
+using NameChanger;
 using System.Reflection;
 using TMPro;
 
@@ -30,7 +30,7 @@ namespace AntiDexter.Patches
                         if (__instance.worldSpaceUIPlayerName != null && __instance.worldSpaceUIPlayerName.text != null)
                         {
                             __instance.worldSpaceUIPlayerName.text.text = "Mohamad";
-                            ColoredNametagMod.logger.LogInfo($"方法1: 检测到目标名称: {currentName}，已替换为: Mohamad");
+                            AntiDexterPlugin.logger.LogInfo($"方法1: 检测到目标名称: {currentName}，已替换为: Mohamad");
                             return;
                         }
                         
@@ -41,7 +41,7 @@ namespace AntiDexter.Patches
                             if (text.text.Contains(currentName))
                             {
                                 text.text = text.text.Replace(currentName, "Mohamad");
-                                ColoredNametagMod.logger.LogInfo($"方法2: 检测到目标名称: {currentName}，已替换为: Mohamad");
+                                AntiDexterPlugin.logger.LogInfo($"方法2: 检测到目标名称: {currentName}，已替换为: Mohamad");
                                 return;
                             }
                         }
@@ -54,19 +54,19 @@ namespace AntiDexter.Patches
                             if (playerNameObj is TextMeshPro textMesh)
                             {
                                 textMesh.text = "Mohamad";
-                                ColoredNametagMod.logger.LogInfo($"方法3: 检测到目标名称: {currentName}，已替换为: Mohamad");
+                                AntiDexterPlugin.logger.LogInfo($"方法3: 检测到目标名称: {currentName}，已替换为: Mohamad");
                                 return;
                             }
                         }
                         
-                        ColoredNametagMod.logger.LogWarning($"无法找到合适的方法修改玩家名称: {currentName}");
+                        AntiDexterPlugin.logger.LogWarning($"无法找到合适的方法修改玩家名称: {currentName}");
                     }
                 }
             }
             catch (System.Exception ex)
             {
                 // 记录错误
-                ColoredNametagMod.logger.LogError($"修改名称时发生错误: {ex.Message}");
+                AntiDexterPlugin.logger.LogError($"修改名称时发生错误: {ex.Message}");
             }
         }
     }
